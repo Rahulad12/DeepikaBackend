@@ -3,7 +3,6 @@ const Event = require("../models/Event");
 const createEvent = async (req, res) => {
   try {
     const { title, date, type } = req.body;
-    console.log(req.body);
 
     const event = await Event.create({
       title,
@@ -29,22 +28,19 @@ const getAllEvents = async (req, res) => {
 
 const UpdateEvent = async (req, res) => {
   const { id } = req.params;
-  
 
   const { title, date, type } = req.body;
-  
 
   try {
     const event = await Event.findById({ _id: id });
-    
+
     if (event) {
       event.title = title || event.title;
       event.date = date || event.date;
       event.type = type || event.type;
       await event.save();
-    }
-    else{
-      res.status(400).json({message:"Error,cannot update Event"})
+    } else {
+      res.status(400).json({ message: "Error,cannot update Event" });
     }
   } catch (err) {
     res.status(500).json({ message: "Server error, could not update event" });
