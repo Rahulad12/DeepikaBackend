@@ -13,13 +13,8 @@ Database();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// CORS options configuration
-const corsOptions = {
-  origin: "https://mydemoschool.vercel.app/", // Correct URL (no trailing slash)
-  methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
-  credentials: true, // Enable credentials (cookies, authorization headers, etc.)
-};
-app.use(cors(corsOptions)); // Apply CORS middleware with options
+// Middleware for handling CORS
+app.use(cors());
 
 // Routes
 const ContactRouter = require("./Routes/ContactRouter");
