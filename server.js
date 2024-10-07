@@ -23,12 +23,12 @@ const UserRouter = require("./Routes/UserRouter");
 const UploadsRouter = require("./Routes/UploadsRouter");
 const EventRouter = require("./Routes/EventRouter");
 
+// Use the routes
 app.use("/api/contact", ContactRouter);
 app.use("/api/notice", NoticeRouter);
 app.use("/api/auth", UserRouter);
 app.use("/api/upload", UploadsRouter);
 app.use("/api/event", EventRouter);
-
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 // Serve static files in production
@@ -54,5 +54,3 @@ app.use((err, req, res, next) => {
 app.listen(5000, () => {
   console.log("Server is running on port 5000");
 });
-
-
