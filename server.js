@@ -33,10 +33,10 @@ app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 // Serve static files in production
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../Frontend", "dist")));
+  app.use(express.static(path.join(__dirname, "../frontend", "dist")));
 
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "../Frontend", "dist", "index.html"));
+    res.sendFile(path.resolve(__dirname, "../frontend", "dist", "index.html"));
   });
 } else {
   app.get("/", (req, res) => {
@@ -54,3 +54,5 @@ app.use((err, req, res, next) => {
 app.listen(5000, () => {
   console.log("Server is running on port 5000");
 });
+
+
